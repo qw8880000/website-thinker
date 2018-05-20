@@ -1,3 +1,7 @@
 .body-bg-dark {
     background: #1d1c1c;
 }
+
+.navbar-nav > .nav-item > .nav-link.active {
+    color: white;
+}
