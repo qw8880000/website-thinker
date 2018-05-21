@@ -13,4 +13,4 @@ node_modules/
 
 # sass
 .sass-cache/
-src/client/css/app.css.map
+*.css.map

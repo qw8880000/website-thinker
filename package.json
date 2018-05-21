@@ -1,0 +1,23 @@
+{
+  "name": "website-thinker",
+  "version": "1.0.0",
+  "description": "A website homepage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "./node_modules/sass/sass.js scss/app.scss css/app.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qw8880000/website-thinker.git"
+  },
+  "author": "qw8880000",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qw8880000/website-thinker/issues"
+  },
+  "homepage": "https://github.com/qw8880000/website-thinker#readme",
+  "devDependencies": {
+    "sass": "^1.3.2"
+  }
+}
