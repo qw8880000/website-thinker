@@ -1,3 +1,10 @@
+.header-navbar {
+  padding: $header-navbar-padding-y $header-navbar-padding-x;
+  background-color: $white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+
 //
 // modify bootstrap's navbar
 .navbar-nav > .nav-item > .nav-link.active {
@@ -7,8 +14,4 @@
 
 .navbar-nav > .nav-item > .nav-link.active {
   color: white;
-}
-
-.navbar--shadow {
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
