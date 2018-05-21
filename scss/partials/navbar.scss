@@ -1,0 +1,14 @@
+//
+// modify bootstrap's navbar
+.navbar-nav > .nav-item > .nav-link.active {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.navbar-nav > .nav-item > .nav-link.active {
+  color: white;
+}
+
+.navbar--shadow {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}

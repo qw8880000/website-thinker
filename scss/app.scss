@@ -43,3 +43,15 @@
 //@import "vendors/bootstrap/carousel";
 @import "vendors/bootstrap/utilities";
 //@import "vendors/bootstrap/print";
+
+//
+// partials
+//
+@import "partials/navbar";
+@import "partials/section";
+
+//
+// pages
+//
+
+@import "pages/home";
