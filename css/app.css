@@ -5983,6 +5983,15 @@ a.text-dark:hover, a.text-dark:focus {
   overflow: hidden;
 }
 
+.footer {
+  padding: 4rem 0;
+  background-color: #080808;
+}
+
+.footer-label {
+  color: #343a40;
+}
+
 .home-body-bg {
   background: #1d1c1c;
 }
