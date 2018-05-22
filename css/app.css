@@ -5970,6 +5970,19 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 3rem;
   }
 }
+.products-card {
+  margin: 0.1rem;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.shops-wrapper {
+  margin: 0.4rem;
+  border-radius: 100rem;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
 .home-body-bg {
   background: #1d1c1c;
 }
