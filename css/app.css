@@ -5993,6 +5993,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .home-body-bg {
+  position: relative;
   background: #1d1c1c;
 }
 
