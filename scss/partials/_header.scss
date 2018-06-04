@@ -21,3 +21,9 @@
 .logo {
   max-height: 40px;
 }
+
+@include media-breakpoint-down(xs) {
+  .logo {
+    max-height: 30px;
+  }
+}

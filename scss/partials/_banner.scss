@@ -18,7 +18,7 @@
   color: $white;
 }
 
-@include media-breakpoint-up(xs) {
+@include media-breakpoint-down(xs) {
   .banner-carousel-content {
     min-height: 350px;
   }
@@ -28,7 +28,7 @@
   }
 }
 
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-down(sm) {
   .banner-carousel-content {
     min-height: 576px;
   }

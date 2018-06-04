@@ -2874,23 +2874,23 @@ button.bg-dark:focus {
 }
 
 .border {
-  border: 1px solid #dee2e6 !important;
+  border: 1px solid #adb5bd !important;
 }
 
 .border-top {
-  border-top: 1px solid #dee2e6 !important;
+  border-top: 1px solid #adb5bd !important;
 }
 
 .border-right {
-  border-right: 1px solid #dee2e6 !important;
+  border-right: 1px solid #adb5bd !important;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #dee2e6 !important;
+  border-bottom: 1px solid #adb5bd !important;
 }
 
 .border-left {
-  border-left: 1px solid #dee2e6 !important;
+  border-left: 1px solid #adb5bd !important;
 }
 
 .border-0 {
@@ -5918,6 +5918,11 @@ a.text-dark:hover, a.text-dark:focus {
   max-height: 40px;
 }
 
+@media (max-width: 575.98px) {
+  .logo {
+    max-height: 30px;
+  }
+}
 .section {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -5957,15 +5962,16 @@ a.text-dark:hover, a.text-dark:focus {
   color: #fff;
 }
 
-.banner-carousel-content {
-  min-height: 350px;
-}
+@media (max-width: 575.98px) {
+  .banner-carousel-content {
+    min-height: 350px;
+  }
 
-.banner-carousel-title {
-  font-size: 2rem;
+  .banner-carousel-title {
+    font-size: 2rem;
+  }
 }
-
-@media (min-width: 576px) {
+@media (max-width: 767.98px) {
   .banner-carousel-content {
     min-height: 576px;
   }
@@ -5983,7 +5989,7 @@ a.text-dark:hover, a.text-dark:focus {
 .shops-wrapper {
   margin: 0.4rem;
   border-radius: 100rem;
-  border: 1px solid #dee2e6;
+  border: 1px solid #adb5bd;
   overflow: hidden;
 }
 
