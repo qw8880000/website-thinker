@@ -5914,6 +5914,10 @@ a.text-dark:hover, a.text-dark:focus {
   color: white;
 }
 
+.logo {
+  max-height: 40px;
+}
+
 .section {
   padding-top: 5rem;
   padding-bottom: 5rem;
