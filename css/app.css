@@ -5956,7 +5956,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .banner-carousel-title {
-  font-size: 4rem;
+  font-size: 3.25rem;
   font-weight: 600;
   letter-spacing: 2px;
   color: #fff;
@@ -5968,7 +5968,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   .banner-carousel-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 @media (max-width: 575.98px) {
@@ -5977,7 +5977,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   .banner-carousel-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 .products-card {
