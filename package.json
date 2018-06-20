@@ -19,6 +19,7 @@
   "homepage": "https://github.com/qw8880000/website-thinker#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-imagemin": "^4.1.0",
     "sass": "^1.3.2"
   }
 }
