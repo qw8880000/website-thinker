@@ -3,7 +3,10 @@ var imagemin = require('gulp-imagemin');
 
 gulp.task('imagemin', function() {
   gulp.src('images-raw/**/*')
-  .pipe(imagemin([], {
+  .pipe(imagemin([
+    imagemin.jpegtran({progressive: true}),
+    imagemin.optipng({optimizationLevel: 5})
+  ], {
 	  verbose: true
   }))
   .pipe(gulp.dest('images'))
