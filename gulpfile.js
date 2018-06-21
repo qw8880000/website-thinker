@@ -10,6 +10,7 @@ var pump = require('pump');
 var concat = require('gulp-concat');
 var merge = require('merge-stream');
 var rename = require('gulp-rename');
+var htmlreplace = require('gulp-html-replace');
 
 //
 // sass convert to css
@@ -68,6 +69,15 @@ gulp.task('imagemin', function() {
       verbose: true
     }))
     .pipe(gulp.dest('./build/images'))
+});
+
+gulp.task('html-replace', function() {
+  return gulp.src('index.html')
+    .pipe(htmlreplace({
+      'css': 'css/app.min.css',
+      'js': 'js/app.min.js'
+    }))
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('default', function() {
