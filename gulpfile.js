@@ -9,18 +9,11 @@ var uglify = require('gulp-uglify');
 var pump = require('pump');
 var concat = require('gulp-concat');
 var merge = require('merge-stream');
+var rename = require('gulp-rename');
 
-gulp.task('imagemin', function() {
-  return gulp.src('./images/**/*')
-  .pipe(imagemin([
-    imagemin.jpegtran({progressive: true}),
-    imagemin.optipng({optimizationLevel: 5})
-  ], {
-	  verbose: true
-  }))
-  .pipe(gulp.dest('./build/images'))
-});
-
+//
+// sass convert to css
+//
 gulp.task('sass', function () {
   return gulp.src('./scss/app.scss')
     .pipe(sourcemaps.init())
@@ -29,18 +22,29 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./css'));
 });
 
+//
+// 1. css autoprefixer
+//
 gulp.task('postcss', function () {
   return gulp.src('./css/app.css')
     .pipe(postcss([ autoprefixer() ]))
     .pipe(gulp.dest('./css'));
 });
 
+//
+// minify css
+//
 gulp.task('minify-css', function () {
   return gulp.src('./css/app.css')
     .pipe(cleanCSS())
+    .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./dist/css'));
 });
 
+//
+// 1. minify javascript
+// 2. concat javascirpt
+//
 gulp.task('minify-js', function () {
   var jsWaitMinify = gulp.src('./js/*.js')
     .pipe(uglify());
@@ -50,6 +54,20 @@ gulp.task('minify-js', function () {
   merge(jsWaitMinify, jsMinified)
     .pipe(concat('app.min.js'))
     .pipe(gulp.dest('./dist/js'));
+});
+
+//
+// images optimization
+//
+gulp.task('imagemin', function() {
+  return gulp.src('./images/**/*')
+    .pipe(imagemin([
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 5})
+    ], {
+      verbose: true
+    }))
+    .pipe(gulp.dest('./build/images'))
 });
 
 gulp.task('default', function() {
