@@ -49,12 +49,15 @@ gulp.task('minify-css', function () {
 // 2. concat javascirpt
 //
 gulp.task('minify-js', function () {
-  var jsWaitMinify = gulp.src('./js/*.js')
-    .pipe(uglify());
+  var jsMinified = gulp.src([
+    './js/vendor/jquery-slim.min.js',
+    './js/vendor/bootstrap.min.js',
+    './js/vendor/popper.min.js'
+  ]);
 
-  var jsMinified = gulp.src('./js/vendor/*.js');
+  var jsWaitMinify = gulp.src('./js/*.js').pipe(uglify());
 
-  return merge(jsWaitMinify, jsMinified)
+  return merge(jsMinified, jsWaitMinify)
     .pipe(concat('app.min.js'))
     .pipe(gulp.dest('./dist/js'));
 });
