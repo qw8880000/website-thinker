@@ -11,6 +11,8 @@ var concat = require('gulp-concat');
 var merge = require('merge-stream');
 var rename = require('gulp-rename');
 var htmlreplace = require('gulp-html-replace');
+var clean = require('gulp-clean');
+var gulpSequence = require('gulp-sequence')
 
 //
 // sass convert to css
@@ -28,7 +30,7 @@ gulp.task('sass', function () {
 //
 gulp.task('postcss', function () {
   return gulp.src('./css/app.css')
-    .pipe(postcss([ autoprefixer() ]))
+    .pipe(postcss([autoprefixer()]))
     .pipe(gulp.dest('./css'));
 });
 
@@ -38,7 +40,7 @@ gulp.task('postcss', function () {
 gulp.task('minify-css', function () {
   return gulp.src('./css/app.css')
     .pipe(cleanCSS())
-    .pipe(rename({ extname: '.min.css' }))
+    .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('./dist/css'));
 });
 
@@ -52,7 +54,7 @@ gulp.task('minify-js', function () {
 
   var jsMinified = gulp.src('./js/vendor/*.js');
 
-  merge(jsWaitMinify, jsMinified)
+  return merge(jsWaitMinify, jsMinified)
     .pipe(concat('app.min.js'))
     .pipe(gulp.dest('./dist/js'));
 });
@@ -60,7 +62,7 @@ gulp.task('minify-js', function () {
 //
 // images optimization
 //
-gulp.task('imagemin', function() {
+gulp.task('imagemin', function () {
   return gulp.src('./images/**/*')
     .pipe(imagemin([
       imagemin.jpegtran({progressive: true}),
@@ -68,10 +70,13 @@ gulp.task('imagemin', function() {
     ], {
       verbose: true
     }))
-    .pipe(gulp.dest('./build/images'))
+    .pipe(gulp.dest('./dist/images'))
 });
 
-gulp.task('html-replace', function() {
+//
+// html block replace
+//
+gulp.task('html-replace', function () {
   return gulp.src('index.html')
     .pipe(htmlreplace({
       'css': 'css/app.min.css',
@@ -80,6 +85,18 @@ gulp.task('html-replace', function() {
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', function() {
+gulp.task('clean', function () {
+  return gulp.src('./dist', {read: false})
+    .pipe(clean());
+});
+
+gulp.task('default', function () {
   // 将你的默认的任务代码放在这
 });
+
+gulp.task('build', gulpSequence(
+  'sass',
+  'postcss',
+  'minify-css',
+  ['minify-js', 'imagemin', 'html-replace']
+));
