@@ -20,7 +20,7 @@ var gulpSequence = require('gulp-sequence')
 gulp.task('sass', function () {
   return gulp.src('./scss/app.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./css'));
 });
