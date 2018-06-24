@@ -12,7 +12,9 @@ var merge = require('merge-stream');
 var rename = require('gulp-rename');
 var htmlreplace = require('gulp-html-replace');
 var clean = require('gulp-clean');
-var gulpSequence = require('gulp-sequence')
+var gulpSequence = require('gulp-sequence');
+var rev = require('gulp-rev');
+var revRewrite = require('gulp-rev-rewrite');
 
 //
 // sass convert to css
@@ -35,20 +37,24 @@ gulp.task('postcss', function () {
 });
 
 //
-// minify css
+// 1. minify css
+// 2. css file revisioning
 //
-gulp.task('minify-css', function () {
+gulp.task('build-css', function () {
   return gulp.src('./css/app.css')
     .pipe(cleanCSS())
     .pipe(rename({extname: '.min.css'}))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(rev())
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(rev.manifest('rev-manifest-css.json'))
+    .pipe(gulp.dest('./dist/manifest'));
 });
 
 //
 // 1. minify javascript
 // 2. concat javascirpt
 //
-gulp.task('minify-js', function () {
+gulp.task('build-js', function () {
   var jsMinified = gulp.src([
     './js/vendor/jquery-slim.min.js',
     './js/vendor/bootstrap.min.js',
@@ -59,7 +65,10 @@ gulp.task('minify-js', function () {
 
   return merge(jsMinified, jsWaitMinify)
     .pipe(concat('app.min.js'))
-    .pipe(gulp.dest('./dist/js'));
+    .pipe(rev())
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(rev.manifest('rev-manifest-js.json'))
+    .pipe(gulp.dest('./dist/manifest'));
 });
 
 //
@@ -77,13 +86,19 @@ gulp.task('imagemin', function () {
 });
 
 //
-// html block replace
+// 1. html block replace
+// 2. asserts revisioning
 //
-gulp.task('html-replace', function () {
+gulp.task('build-html', function () {
+  var manifest = gulp.src('dist/manifest/*.json');
+
   return gulp.src('index.html')
     .pipe(htmlreplace({
       'css': 'css/app.min.css',
       'js': 'js/app.min.js'
+    }))
+    .pipe(revRewrite({
+      manifest: manifest
     }))
     .pipe(gulp.dest('./dist'));
 });
@@ -108,8 +123,11 @@ gulp.task('default', gulpSequence(
 ));
 
 gulp.task('build', gulpSequence(
+  'clean',
   'sass',
   'postcss',
-  'minify-css',
-  ['minify-js', 'imagemin', 'html-replace']
+  'build-css',
+  'build-js',
+  'imagemin',
+  'build-html'
 ));
