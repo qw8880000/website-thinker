@@ -93,9 +93,19 @@ gulp.task('clean', function () {
     .pipe(clean());
 });
 
-gulp.task('default', function () {
-  // 将你的默认的任务代码放在这
+//
+// watch
+//
+gulp.task('watch', function () {
+  gulp.watch('scss/**/*.scss', ['sass']);
+  gulp.watch('css/*.css', ['postcss']);
 });
+
+gulp.task('default', gulpSequence(
+  'sass',
+  'postcss',
+  'watch'
+));
 
 gulp.task('build', gulpSequence(
   'sass',
