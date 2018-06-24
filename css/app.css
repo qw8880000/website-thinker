@@ -6010,6 +6010,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .banner-carousel-content {
   position: relative;
+  text-align: center;
   background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner/banner-1.jpg) no-repeat;
   background-size: cover;
   min-height: 650px;
@@ -6020,6 +6021,7 @@ a.text-dark:hover, a.text-dark:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
   font-size: 3.25rem;
   font-weight: 600;
   letter-spacing: 2px;
