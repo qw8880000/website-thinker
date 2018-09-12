@@ -1,8 +1,14 @@
 .footer {
-  padding: 4rem 0;
   background-color: #080808;
 }
 
 .footer-label {
   color: #b8b9b9;
+}
+
+.footer-copyright {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background-color: $body-bg-color;
 }
