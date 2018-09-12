@@ -6072,3 +6072,7 @@ a.text-dark:hover, a.text-dark:focus {
   position: relative;
   background: #1d1c1c;
 }
+
+.copyright {
+  padding: 1rem 0;
+}
